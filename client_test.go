@@ -4,14 +4,28 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/hashicorp/vault/api"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-func TestClient_Encrypt_Decrypt(t *testing.T) {
-	// Create a new cipher client
-	cipherClient, _ := NewClientWithToken("myroot", "http://localhost:8200")
+var cipherClient *Client
 
+func init() {
+	// Create a new cipher client
+	var err error
+	cipherClient, err = NewClientWithToken("myroot", "http://localhost:8200")
+	if err != nil {
+		panic(err)
+	}
+
+	err = cipherClient.vaultClient.Sys().Mount("transit", &api.MountInput{Type: "transit"})
+	if err != nil {
+		panic(err)
+	}
+}
+
+func TestClient_Encrypt_Decrypt(t *testing.T) {
 	type Person struct {
 		Name    string `encrypted:"true"`
 		Address string `encrypted:"true"`
