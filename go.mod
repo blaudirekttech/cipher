@@ -1,4 +1,4 @@
-module github.com/ruukydev/cipher
+module github.com/blaudirekttech/cipher
 
 go 1.20
 

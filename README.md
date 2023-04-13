@@ -23,7 +23,7 @@ To use `cipher`, follow these steps:
 1. Import the `cipher` package.
 
 ```go
-import "github.com/ruukydev/cipher"
+import "github.com/blaudirekttech/cipher"
 ```
 
 2. Create a new `cipher.Client` with a Vault token and address.
