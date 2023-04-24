@@ -3,7 +3,7 @@ module github.com/blaudirekttech/cipher
 go 1.20
 
 require (
-	github.com/hashicorp/vault/api v1.9.0
+	github.com/hashicorp/vault/api v1.9.1
 	github.com/stretchr/testify v1.8.2
 )
 
